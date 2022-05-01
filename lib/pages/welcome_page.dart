@@ -17,8 +17,10 @@ class _WelcomePageState extends State<WelcomePage> {
     'welcome-two.png',
     'welcome-three.png'
   ];
-  List text = [
-
+  List text1 = [
+    'Trips',
+    'Fun',
+    'Relaxation'
   ];
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppLargeText(text: 'Trips'),
+                      AppLargeText(text: text1[index]),//'Trips'),
                       AppText(text: 'Mountain',size: 30,),
                       const SizedBox(
                         height: 20,
@@ -71,19 +73,19 @@ class _WelcomePageState extends State<WelcomePage> {
                       return Container(
                         margin: const EdgeInsets.only(bottom: 2),
                         width: 8,
-                        height: index == indexDots?25:8,
+                        height: index == indexDots? 25: 8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           color: index ==indexDots ? AppColors.mainColor: AppColors.mainColor.withOpacity(0.3),
                         ),
                       );
                     }),
-                  )
+                  ),
                 ],
               ),
             ),
           );
-      },)
+      },),
     );
   }
 }

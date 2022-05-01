@@ -1,5 +1,4 @@
 import'package:flutter/material.dart';
-import'package:flutter/cupertino.dart';
 class AppLargeText extends StatelessWidget {
   double size;
   final String text;
@@ -16,7 +15,7 @@ class AppLargeText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: size,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
       )
     );
   }
