@@ -4,6 +4,7 @@ import'package:flutter/material.dart';
 import 'package:travel_app/misc/colors.dart';
 import 'package:travel_app/widgets/app_text.dart';
 
+import '../widgets/app_button.dart';
 import '../widgets/app_large_text.dart';
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   int gottenStars = 3;
+  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +69,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 height: 500,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -113,7 +115,31 @@ class _DetailPageState extends State<DetailPage> {
                     SizedBox(
                       height: 25,
                     ),
-                    AppLargeText(text: 'People',color: Colors.black.withOpacity(0.8),)
+                    AppLargeText(text: 'People',color: Colors.black.withOpacity(0.8),size: 20),
+                    SizedBox(height: 5,),
+                    AppText(text: 'Number of people in your group',color: AppColors.mainTextColor,),
+                    Wrap(
+                      children: List.generate(5, (index){
+                        return InkWell(
+                          onTap: (){
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            child: AppButton(size: 50,
+                                color: selectedIndex==index? Colors.white: Colors.black,
+                                backgroundColor: selectedIndex==index? Colors.black: AppColors.buttonBackground,
+                                borderColor: selectedIndex==index? Colors.black: AppColors.buttonBackground,
+                              text: (index+1).toString(),
+                            ),
+                          ),
+                        );
+
+                      }),
+                    ),
+                    SizedBox(height: 10,),
                   ],
                 ),
               )
