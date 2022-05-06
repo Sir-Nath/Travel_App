@@ -4,6 +4,7 @@ import 'package:travel_app/services/data_services.dart';
 import 'app_cubit_state.dart';
 import '../cubit/app_cubit_state.dart';
 import 'package:travel_app/model/data_model.dart';
+//import 'package:travel_app/cubit/app_cubit_state.dart';
 
 class AppCubits extends Cubit<CubitStates> {
   AppCubits({required this.data}) : super(InitialState()) {
@@ -20,6 +21,9 @@ class AppCubits extends Cubit<CubitStates> {
     }
   }
   detailPage(DataModel data){
-    emit(DetailState(data));
+  emit(DetailState(data));
+  }
+  goHome(){
+  emit(LoadedState(places));
   }
 }

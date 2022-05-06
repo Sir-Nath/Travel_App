@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:travel_app/cubit/app_cubit.dart';
 import 'package:travel_app/misc/colors.dart';
 import 'package:travel_app/widgets/app_text.dart';
-
 import '../cubit/app_cubit_state.dart';
 import '../widgets/app_large_text.dart';
 import '../cubit/app_cubit.dart';
@@ -90,18 +89,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {//Ta
                         itemCount: info.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            width: 200,
-                            height: 300,
-                            margin: const EdgeInsets.only(right: 15, top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white,
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                    'http://mark.bslmeiyu.com/uploads/'+info[index].img
-                                  ),
-                                  fit: BoxFit.cover
+                          return GestureDetector(
+                            onTap: (){
+                              BlocProvider.of<AppCubits>(context).detailPage(info[index]);
+                            },
+                            child: Container(
+                              width: 200,
+                              height: 300,
+                              margin: const EdgeInsets.only(right: 15, top: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                      'http://mark.bslmeiyu.com/uploads/'+info[index].img
+                                    ),
+                                    fit: BoxFit.cover
+                                ),
                               ),
                             ),
                           );
@@ -139,11 +143,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {//Ta
                           margin: const EdgeInsets.only(right: 40),
                           child: Column(
                             children: [
-                              GestureDetector(
-                                  onTap: (){
-
-                                  },
-                                  child: Container(
+                              Container(
                                 //margin: const EdgeInsets.only(right: 50),
                                   width: 60,
                                   height: 60,
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {//Ta
                                           fit: BoxFit.cover
                                       )
                                   )
-                              )),
+                              ),
                               SizedBox(
                                 height: 5,
                               ),
@@ -181,6 +181,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {//Ta
   }
 
 }
+
 class CircleTabsIndicator extends Decoration{
   final Color color;
   double radius;
