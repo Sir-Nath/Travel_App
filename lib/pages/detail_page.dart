@@ -46,7 +46,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Positioned(
-                  left: 20,
+                  left: 15,
                   top: 50,
                   child: Row(
                     children: [
@@ -54,15 +54,15 @@ class _DetailPageState extends State<DetailPage> {
                         onPressed: (){
                           BlocProvider.of<AppCubits>(context).goHome();
                         },
-                        icon: Icon(Icons.menu,),
+                        icon: Icon(Icons.arrow_back),
                         color: Colors.white,
                       ),
                       SizedBox(
-                        width: 250,
+                        width: 285,
                       ),
                       IconButton(
                         onPressed: (){},
-                        icon: Icon(Icons.menu,),
+                        icon: Icon(Icons.more_vert,),
                         color: Colors.white,
                       ),
                     ],

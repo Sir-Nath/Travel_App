@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/data_model.dart';
+//import '../model/data_model.dart';
+import 'package:travel_app/model/data_model.dart';
 
 class DataServices{
-  String baseUrl = 'http;//mark.bslmeiyu.com/api';
+  String baseUrl = 'http://mark.bslmeiyu.com/api';
 
   Future<List> getInfo() async {
     var apiUrl = '/getplaces';
@@ -12,8 +13,8 @@ class DataServices{
     try {
       if (res.statusCode == 200) {
         List<dynamic> list = json.decode(res.body);
-        print(list);
-        return list.map((e) => DataModel.fromjson(e)).toList();
+        //print(list);
+        return list.map((e) => DataModel.fromJson(e)).toList();
       }
       else {
         return <DataModel>[];
